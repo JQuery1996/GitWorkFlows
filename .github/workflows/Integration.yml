@@ -44,7 +44,7 @@ jobs:
         run: go build -v ./...
 
       - name: Run Tests
-        run: go run -v -race -covermode=atomic ./...
+        run: go test
 
   docker-build:
     runs-on: ubuntu-latest
