@@ -1,0 +1,19 @@
+#The GitHub event that triggers the workflow. Events can be a single string, array of events, array of event types, or an event configuration map that schedules a workflow or restricts the execution of a workflow to specific files, tags, or branch changes. View a full list of events that trigger workflows.
+on: push
+
+# The name of the workflow that GitHub displays on your repository's 'Actions' tab.
+name: Integration
+
+jobs: 
+    build:
+        # define the type of machine to run the job on.
+        runs-on: ubuntu-latest
+        steps: 
+            - uses: actions/checkout@v6
+            - uses: actions/setup-go@v6
+              with:
+                go-version: '1.25' # The Go version to download (if necessary) and use.
+            - run: | 
+                go build
+
+
