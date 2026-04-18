@@ -41,10 +41,17 @@ jobs:
       - name: build
         env:
           CGO_ENABLED: 0
-        run: go build -v ./...
+        run: go build -v -o goApp ./...
 
       - name: Run Tests
         run: go test
+
+      - name: integration Test
+        shell: bash
+        run: |
+          ./goApp &
+          result = $(curl localhost:300)
+          [[ $result == 'Hello, World!' ]]
 
   docker-build:
     runs-on: ubuntu-latest
