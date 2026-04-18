@@ -18,3 +18,7 @@ jobs:
           CGO_ENABLED: 0
         run: |
           go build
+
+      - name: Run Tests
+        run: |
+          go test # run unit tests in go
