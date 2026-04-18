@@ -2,7 +2,8 @@ name: Release
 
 on:
   push:
-    tags: ["v*.*.*"]
+    tags:
+      - 'v*.*.*'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
