@@ -24,7 +24,7 @@ func main() {
 
 	app.Get("/bye", func(c *fiber.Ctx) error {
 		return c.SendString("Bye, World!")
-	} 
+	)} 
 
 	app.Get("/weather", func(c *fiber.Ctx) error {
 		url := "https://wttr.in"
