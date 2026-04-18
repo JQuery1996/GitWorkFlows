@@ -32,7 +32,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v6
         with:
-          images: $ {{ secrets.DOCKERHUB_USERNAME }}/devops-docker-demo
+          images: ${{ secrets.DOCKERHUB_USERNAME }}/devops-docker-demo
           tags: |
             type=semver,pattern={{version}}
             type=sha,format=short
@@ -41,7 +41,7 @@ jobs:
 
       # 2. Setup Buildx (The "Turbo" builder
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       # 3. Secure Login using official action
       - name: Login to Docker Hub
