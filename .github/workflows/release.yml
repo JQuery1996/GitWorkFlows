@@ -16,9 +16,6 @@ jobs:
     name: Build & Push Docker
     runs-on: ubuntu-latest
 
-    # only run the push if we are on main or a tag, not for every PR check
-    if: github.event_name == 'push'
-
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -52,6 +49,6 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v7
         with:
-          push: ${{ github.event_name != 'pull_request' }}
+          push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
