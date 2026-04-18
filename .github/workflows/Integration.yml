@@ -50,8 +50,8 @@ jobs:
         shell: bash
         run: |
           ./goApp &
-          result = $(curl localhost:3000)
-          [[ $result == 'Hello, World!' ]]
+          res=$(curl localhost:3000)
+          [[ $res == 'Hello, World!' ]]
 
   docker-build:
     runs-on: ubuntu-latest
