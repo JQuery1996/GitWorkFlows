@@ -24,7 +24,7 @@ func main() {
 
 	app.Get("/bye", func(c *fiber.Ctx) error {
 		return c.SendString("Bye, World!")
-	)} 
+	}) // <--- Ensure this is exactly: })
 
 	app.Get("/weather", func(c *fiber.Ctx) error {
 		url := "https://wttr.in"
@@ -33,13 +33,14 @@ func main() {
 		if err != nil {
 			return c.Status(500).SendString(err.Error())
 		}
+		defer res.Body.Close()
 
 		data, err := io.ReadAll(res.Body)
 		if err != nil {
 			return c.Status(500).SendString(err.Error())
 		}
 
-		c.Set("content-type", "text/html")
+		c.Set("Content-Type", "text/html")
 		return c.Send(data)
 	})
 
