@@ -50,7 +50,7 @@ jobs:
         shell: bash
         run: |
           ./goApp &
-          result = $(curl localhost:300)
+          result = $(curl localhost:3000)
           [[ $result == 'Hello, World!' ]]
 
   docker-build:
